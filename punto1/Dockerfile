@@ -1,5 +1,9 @@
 FROM alpine:3.20
 
-COPY mensaje.txt /app/data 
+WORKDIR /app
+COPY mensaje.txt .
 
-CMD ["alpine","mensaje.txt"]
+RUN apk add --no-cache curl
+COPY . .
+
+CMD ["cat", "mensaje.txt"]
